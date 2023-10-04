@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Create Task</h3>
+<br>
+<form method="post" action="{% url 'join' %}">
+    {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control" id="example1" name="title" placeholder="Title">
+      <!-- <small id="emailHelp" class="form-text text-muted">Name </small> -->
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="example2"  name="description" placeholder="Description">
+        <!-- <small id="emailHelp" class="form-text text-muted">Name </small> -->
+      </div>
+      <div class="form-group">
+        <!-- <label for="exampleInputEmail1">Due Date</label> -->
+        <input type="email" class="form-control" id="example3" name="assignedId" placeholder="Assignee Id">
+        <!-- <small id="emailHelp" class="form-text text-muted">Name </small> -->
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Due Date</label>
+        <input type="date" class="form-control" id="example4"  name="dueDate">
+        <!-- <small id="emailHelp" class="form-text text-muted">Name </small> -->
+      </div>
+    <button type="submit" class="btn btn-primary">Create Task</button>
+  </form>
+  {% endblock %}
