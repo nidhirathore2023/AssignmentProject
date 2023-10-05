@@ -12,3 +12,4 @@ class Task(models.Model):
     descrpition = models.CharField(max_length=12)
     assigned = models.ForeignKey(User, on_delete=models.CASCADE)
     dueDate = models.DateField()
+    createdBy = models.PositiveBigIntegerField();
