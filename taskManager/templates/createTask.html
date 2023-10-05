@@ -2,26 +2,26 @@
 {% block content %}
 <h3>Create Task</h3>
 <br>
-<form method="post" action="{% url 'join' %}">
+<form method="post" action="{% url 'createTask'%}">
     {% csrf_token %}
     <div class="form-group">
       <input type="text" class="form-control" id="example1" name="title" placeholder="Title">
-      <!-- <small id="emailHelp" class="form-text text-muted">Name </small> -->
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" id="example2"  name="description" placeholder="Description">
-        <!-- <small id="emailHelp" class="form-text text-muted">Name </small> -->
+        <input type="text" class="form-control" id="example2"  name="descrpition" placeholder="Description">
       </div>
       <div class="form-group">
-        <!-- <label for="exampleInputEmail1">Due Date</label> -->
-        <input type="email" class="form-control" id="example3" name="assignedId" placeholder="Assignee Id">
-        <!-- <small id="emailHelp" class="form-text text-muted">Name </small> -->
+        <select name="assigned" id="assigned" style="width: 300px;">
+            {% for user in allUsers %}
+            <option value="{{user.id}}">{{user.name}}</option>
+            {% endfor %}
+          </select>
+    </div>
+            <div class="form-group">
+                <p>Due Date</p>
+                <input type="date" class="form-control" id="example4"  name="dueDate">
+            </div>
+          <button type="submit" class="btn btn-primary">Create Task</button>
       </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Due Date</label>
-        <input type="date" class="form-control" id="example4"  name="dueDate">
-        <!-- <small id="emailHelp" class="form-text text-muted">Name </small> -->
-      </div>
-    <button type="submit" class="btn btn-primary">Create Task</button>
   </form>
   {% endblock %}

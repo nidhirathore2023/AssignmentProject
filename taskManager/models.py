@@ -11,4 +11,4 @@ class Task(models.Model):
     title = models.CharField(max_length=12)
     descrpition = models.CharField(max_length=12)
     assigned = models.ForeignKey(User, on_delete=models.CASCADE)
-    dueDate = models.DateField(auto_now_add=TRUE)
+    dueDate = models.DateField()
