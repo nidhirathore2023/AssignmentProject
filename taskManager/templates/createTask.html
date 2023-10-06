@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h3>Create Task</h3>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <button type="button" class="btn btn-primary" style="margin:10px ; margin-left: 900px;"> <a class="btn btn-primary" href="{% url 'viewTaskAssigned'%}">View Tasks</a></button>
 <br>
 <form method="post" action="{% url 'createTask'%}">
@@ -12,11 +13,11 @@
         <input type="text" class="form-control" id="example2"  name="descrpition" placeholder="Description">
       </div>
       <div class="form-group">
-        <select name="assigned" id="assigned" style="width: 300px;">
-            {% for user in allUsers %}
-            <option value="{{user.id}}">{{user.name}}</option>
-            {% endfor %}
-          </select>
+        <p>Assigned</p>
+        {% for user in allUsers %}
+        <input type="checkbox" id="hobby1" name="assigned" value="{{user.id}}">
+        <label for="hobby1">{{user.name}}</label><br>
+        {% endfor %}
     </div>
             <div class="form-group">
                 <p>Due Date</p>

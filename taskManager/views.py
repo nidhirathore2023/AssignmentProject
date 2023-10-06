@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 from .models import Task,User
 from .forms import CreateTask
@@ -27,15 +28,17 @@ def viewTaskAssigned(request):
 
 def createTask(request):
     allUsers = User.objects.all()
+    
     if request.method =='POST':
             request.POST = request.POST.copy()
             request.POST._mutable = True
             request.POST['createdBy'] = USER
-            assigned = request.POST.get('assigned')
+            assigned = request.POST.getlist('assigned')
             form = CreateTask(request.POST or None)
             if form.is_valid():
                 form.save()
-                sendNotification(assigned,request)
+                for user in assigned:
+                    sendNotification(user,request)
                 messages.success(request,"Task is created Successfully")
             else:
                 messages.error(request,"Unable to create task")
@@ -54,5 +57,5 @@ def sendNotification(assigned,request):
     # [user.email],
     # fail_silently=False,
     # )
-    print(user.name)
+    # print(user.name)
     messages.success(request,"Email is send to - "+user.name)

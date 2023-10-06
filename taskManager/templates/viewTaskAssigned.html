@@ -32,7 +32,9 @@
         <div class="card" style="width: 50 rem; margin-left:50px;">
           <div class="card-body">
             <h5 class="card-title">Title -- {{task.title}}</h5>
-            <p class="card-text">Assignee -- {{task.assigned.name}}</p>
+            {% for user in task.assigned.all %}
+            <p class="card-text">Assignee -- {{user.name}}</p>
+            {% endfor %}
             <p class="card-text">Descrpition -- {{task.descrpition}}</p>
             <p class="card-text">Due Date -- {{task.dueDate}}</p>
           </div>

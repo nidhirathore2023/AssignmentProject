@@ -10,6 +10,6 @@ class User(models.Model):
 class Task(models.Model):
     title = models.CharField(max_length=12)
     descrpition = models.CharField(max_length=12)
-    assigned = models.ForeignKey(User, on_delete=models.CASCADE)
+    assigned = models.ManyToManyField(User)
     dueDate = models.DateField()
     createdBy = models.PositiveBigIntegerField();
